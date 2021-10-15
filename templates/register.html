@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+<html>
+    <head>
+        {% block title %}<title>Register</title>{% endblock title %}
+     <style>
+
+
+        </style>
+    </head>
+    <body>
+
+        {% block content %}
+        <div class="container">
+
+        <div class="form mt-5">
+
+           <div>
+            <h2 class="text-center fm">Register Here</h2>
+          </div>
+      <hr>
+        <form action='/register' method="POST" class="row g-3 shadow-lg p-3 mb-5 bg-body rounded mt-5" >
+
+            <div class="col-md-12">
+              <label for="inputEmail4" class="form-label">Email</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email" required>
+            </div>
+            <div class="col-md-12">
+              <label for="inputPassword4" class="form-label">Password</label>
+              <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password" required>
+            </div>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="Address" name="address">
+            </div>
+            <div class="col-md-12">
+              <label for="inputCity" class="form-label">City</label>
+              <input type="text" class="form-control" id="inputCity" placeholder="City" name="city">
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-success btn-lg">Sign in</button>
+            </div>
+          </form>
+
+          </div>
+
+          </div>
+
+           {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class=flashes>
+                        {% for category,message in messages %}
+                           <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                <strong>Message:</strong> {{ message}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </ul>
+          {% endif %}
+        {% endwith %}
+        {% endblock content %}        
+    </body>
+</html>

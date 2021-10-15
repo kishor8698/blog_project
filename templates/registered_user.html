@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% block title %} <title>Users</title>{% endblock title %}
+
+{% block content %}
+<div class="container">
+<h1 class="text-center mt-5">Registered User's List</h1>
+<hr>
+<table class="table mt-5  table-bordered">
+<tr class="success">
+    <th>ID</th>
+    <th>EMAIL</th>
+    <th>PASSWORD</th>
+    <th>ADDRESS</th>
+    <th>CITY</th>
+</tr>
+{% for val in result %}
+<tr>
+    <td>{{ val.id }}</td>
+    <td>{{ val.email }}</td>
+    <td>{{ val.password }}</td>
+    <td>{{ val.address }}</td>
+    <td>{{ val.city }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+{% endblock content %}

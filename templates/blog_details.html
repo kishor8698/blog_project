@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+
+{% block title %}<title>Blog Details</title>{% endblock title %}
+
+{% block content %}
+<h1 class="text-center">Blog Details</h1>
+<div class="container mt-5">
+
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+         
+          <h3 class="mb-0"> {{ blog.title}} </h3>
+          <div class="mb-1 text-muted"> {{ blog.pb_date }} </div>
+          <p class="card-text mb-auto"> {{ blog.content }} </p>
+         <h5>Author: {{ blog.author }}</h5>
+         <div class="btn group">
+         {% if current_user.email %}
+        <a href="/edit_blog/{{blog.blog_id}}"><span class="btn btn-lg btn-primary">Edit</a></span> 
+
+        <a href="/delete_blog/{{blog.blog_id}}"><span class="btn btn-lg btn-danger">Delete</a></span>
+        {% endif %}
+        </div>
+        </div>
+        
+      </div>
+    </div>   
+</div>
+
+{% endblock content %}

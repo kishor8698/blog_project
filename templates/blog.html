@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+<html>
+    <head>
+        {% block title %}Blog{% endblock title %}
+    </head>
+    <body class="demo">
+        {% block content %}
+        <h1 class="text-center mt-5">Blog Page</h1>
+        <hr>
+   
+        <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class=flashes>
+                        {% for category,message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                <strong>Message:</strong> {{ message}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </ul>
+          {% endif %}
+        {% endwith %}
+
+    <form action="/blogpost" method="POST" enctype = "multipart/form-data" class="mt-5  shadow-lg p-3 mb-5 mt-5 bg-body rounded">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name='title'>
+        </div>
+
+         <div class="form-group">
+            <label for="exampleFormControlInput1">Author</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Author" name='author'>
+        </div>
+  
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Content</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+        </div>
+
+        <div class="form-group">
+            <lable>Select Image</lable>
+             <input type = "file" name = "file" class="form-control" />
+        </div>
+
+        <input type="submit" value="POST" class="btn btn-primary mt-3">
+  
+    </form>
+</div>
+
+        {% endblock content %}        
+    </body>
+</html>
